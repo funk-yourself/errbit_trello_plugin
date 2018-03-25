@@ -13,7 +13,7 @@ module ErrbitTrelloPlugin
       end
 
       def fields
-        REQUIRED_FIELDS.map { |f| f => {} }.reduce(:merge)
+        REQUIRED_FIELDS.map { |f| { f => {} } }.reduce(:merge)
       end
 
       def icons

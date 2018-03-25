@@ -37,7 +37,7 @@ module ErrbitTrelloPlugin
 
     def errors
       REQUIRED_FIELDS.reduce([]) do |errors, field|
-        errors.tap { |e| e << [field, "#{field.humanize} is required"] }
+        errors.tap { |e| e << [field, "is required"] unless options[field] }
       end
     end
 

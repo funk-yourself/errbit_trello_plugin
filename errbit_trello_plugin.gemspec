@@ -31,6 +31,7 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'errbit_plugin', '~> 0'
   gem.add_runtime_dependency 'ruby-trello', '~> 2.0'
+  gem.add_runtime_dependency 'rest-client', '~> 2.0'
 
   gem.add_development_dependency 'bundler', '~> 1.10'
   gem.add_development_dependency 'rake', '~> 10.0'

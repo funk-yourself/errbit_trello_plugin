@@ -1,4 +1,5 @@
 require 'errbit_trello_plugin/version'
+require 'errbit_trello_plugin/issue_tracker'
 
 module ErrbitTrelloPlugin
   def self.root

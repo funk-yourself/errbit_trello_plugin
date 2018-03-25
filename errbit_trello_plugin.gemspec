@@ -29,8 +29,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'errbit_plugin', '~> 0'
-  spec.add_runtime_dependency 'ruby-trello', '~> 1.1'
+  gem.add_runtime_dependency 'errbit_plugin', '~> 0'
+  gem.add_runtime_dependency 'ruby-trello', '~> 1.1'
 
   gem.add_development_dependency 'bundler', '~> 1.10'
   gem.add_development_dependency 'rake', '~> 10.0'

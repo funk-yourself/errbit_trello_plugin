@@ -9,3 +9,5 @@ module ErrbitTrelloPlugin
     File.read(File.join(self.root, 'static', file))
   end
 end
+
+ErrbitPlugin::Registry.add_issue_tracker(ErrbitTrelloPlugin::IssueTracker)

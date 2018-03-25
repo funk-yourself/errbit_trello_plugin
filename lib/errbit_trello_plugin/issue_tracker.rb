@@ -58,7 +58,7 @@ module ErrbitTrelloPlugin
     private
 
     def trello_client
-      @trello_client ||= Trello::Client.new(options.slice(*CLIENT_FIELDS))
+      @trello_client ||= Trello::Client.new(options.slice(*CLIENT_FIELDS).symbolize_keys)
     end
   end
 end

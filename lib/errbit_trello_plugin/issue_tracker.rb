@@ -1,3 +1,5 @@
+require 'trello'
+
 module ErrbitTrelloPlugin
   class IssueTracker < ErrbitPlugin::IssueTracker
     CLIENT_FIELDS = %w[developer_public_key developer_public_token]

@@ -32,7 +32,7 @@ module ErrbitTrelloPlugin
     end
 
     def configured?
-      options.slice(REQUIRED_FIELDS).keys.size == REQUIRED_FIELDS.size
+      options.slice(*REQUIRED_FIELDS).keys.size == REQUIRED_FIELDS.size
     end
 
     def errors

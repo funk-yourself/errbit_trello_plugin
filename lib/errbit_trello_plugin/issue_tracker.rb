@@ -2,7 +2,7 @@ require 'trello'
 
 module ErrbitTrelloPlugin
   class IssueTracker < ErrbitPlugin::IssueTracker
-    CLIENT_FIELDS = %w[developer_public_key developer_public_token]
+    CLIENT_FIELDS = %w[developer_public_key member_token]
     REQUIRED_FIELDS = CLIENT_FIELDS + ['list_id']
 
     class << self

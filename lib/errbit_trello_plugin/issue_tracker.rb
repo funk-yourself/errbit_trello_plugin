@@ -1,9 +1,11 @@
+require 'errbit_plugin'
 require 'trello'
 
 module ErrbitTrelloPlugin
   class IssueTracker < ErrbitPlugin::IssueTracker
     CLIENT_FIELDS = %w[developer_public_key member_token]
     REQUIRED_FIELDS = CLIENT_FIELDS + ['list_id']
+    OPTIONAL_FIELDS = ['board_url']
 
     class << self
       def label
@@ -11,20 +13,21 @@ module ErrbitTrelloPlugin
       end
 
       def note
-        'note'
+        %q{You need to obtain your key and token <a href="https://trello.com/app-key" target="_blank">here</a>.
+          The easiest way to get Trello List ID is to append ".json" to the url of your Trello board and search for the list by its name.}.html_safe
       end
 
       def fields
-        REQUIRED_FIELDS.map { |f| { f => {} } }.reduce(:merge)
+        (REQUIRED_FIELDS + OPTIONAL_FIELDS).map { |f| { f => {} } }.reduce(:merge)
       end
 
       def icons
         @icons ||= {
           create: [
-            'image/png', ErrbitTrelloPlugin.read_static_file('trello_create.png')
+            'image/png', ErrbitTrelloPlugin.read_static_file('trello.png')
           ],
           goto: [
-            'image/png', ErrbitTrelloPlugin.read_static_file('trello_goto.png'),
+            'image/png', ErrbitTrelloPlugin.read_static_file('trello.png'),
           ],
           inactive: [
             'image/png', ErrbitTrelloPlugin.read_static_file('trello_inactive.png'),
@@ -38,21 +41,15 @@ module ErrbitTrelloPlugin
     end
 
     def errors
-      REQUIRED_FIELDS.reduce([]) do |errors, field|
-        errors.tap { |e| e << [field, "is required"] unless options[field] }
-      end
+      REQUIRED_FIELDS.map { |field| [field, "is required"] unless options[field] }.compact
     end
 
-    def create_issue(title, body, user: {})
-      trello_client.create(:card, list_id: options['list_id'], name: title, body: body).url
-    end
-
-    def close_issue(issue_link, user = {})
-      # Close the issue! (Perhaps using the passed in issue_link url to identify it.)
+    def create_issue(title, body, _)
+      trello_client.create(:card, list_id: options['list_id'], name: title, desc: body).url
     end
 
     def url
-      'http://trello.com'
+      options['board_url']
     end
 
     private

@@ -24,10 +24,10 @@ module ErrbitTrelloPlugin
       def icons
         @icons ||= {
           create: [
-            'image/png', ErrbitTrelloPlugin.read_static_file('trello.png')
+            'image/png', ErrbitTrelloPlugin.read_static_file('trello_create.png')
           ],
           goto: [
-            'image/png', ErrbitTrelloPlugin.read_static_file('trello.png'),
+            'image/png', ErrbitTrelloPlugin.read_static_file('trello_goto.png'),
           ],
           inactive: [
             'image/png', ErrbitTrelloPlugin.read_static_file('trello_inactive.png'),
